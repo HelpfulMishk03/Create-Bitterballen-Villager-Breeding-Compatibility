@@ -1,0 +1,38 @@
+name: Feature request
+description: Suggest a small improvement or compatibility addition
+title: '[Suggestion] '
+labels:
+- enhancement
+body:
+- type: markdown
+  attributes:
+    value: 'Keep requests related to villager food compatibility and Create: Bitterballen.'
+- type: textarea
+  id: idea
+  attributes:
+    label: What would you like changed?
+    placeholder: I would like...
+  validations:
+    required: true
+- type: textarea
+  id: reason
+  attributes:
+    label: Why would this be useful?
+  validations:
+    required: true
+- type: input
+  id: item
+  attributes:
+    label: Relevant item or registry ID
+    description: If this is about a food item, include its registry ID if you know
+      it.
+    placeholder: create_bic_bit:example_food
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Before submitting
+    options:
+    - label: 'This request is related to Create: Bitterballen villager compatibility.'
+      required: true
+    - label: I checked that this has not already been suggested.
+      required: true

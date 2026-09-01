@@ -1,0 +1,47 @@
+name: Missing or incorrect food compatibility
+description: 'Report a Create: Bitterballen food that villagers should handle differently'
+title: '[Food Compatibility] '
+labels:
+- compatibility
+body:
+- type: input
+  id: item_name
+  attributes:
+    label: Item name
+    placeholder: Young Cheese
+  validations:
+    required: true
+- type: input
+  id: registry_id
+  attributes:
+    label: Registry ID
+    placeholder: create_bic_bit:young_cheese
+  validations:
+    required: true
+- type: dropdown
+  id: issue_type
+  attributes:
+    label: What is wrong?
+    options:
+    - Villagers do not pick it up
+    - Villagers pick it up but it does not count as food
+    - Food point value seems wrong
+    - It should not be treated as villager food
+    - Other
+  validations:
+    required: true
+- type: input
+  id: bitterballen_version
+  attributes:
+    label: 'Create: Bitterballen version'
+    placeholder: 1.0.2B
+  validations:
+    required: true
+- type: textarea
+  id: details
+  attributes:
+    label: Details
+    description: Explain what the item currently does and what you think it should
+      do.
+  validations:
+    required: true

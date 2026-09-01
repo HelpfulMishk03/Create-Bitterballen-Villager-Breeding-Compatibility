@@ -1,0 +1,90 @@
+name: Bug report
+description: Report something that is not working correctly
+title: '[Bug] '
+labels:
+- bug
+body:
+- type: markdown
+  attributes:
+    value: Thanks for reporting a bug. Please include enough information for me to
+      reproduce it.
+- type: input
+  id: minecraft_version
+  attributes:
+    label: Minecraft version
+    placeholder: 1.20.1
+  validations:
+    required: true
+- type: input
+  id: forge_version
+  attributes:
+    label: Forge version
+    placeholder: 47.2.0
+  validations:
+    required: true
+- type: input
+  id: create_version
+  attributes:
+    label: Create version
+    placeholder: 6.0.8
+  validations:
+    required: true
+- type: input
+  id: bitterballen_version
+  attributes:
+    label: 'Create: Bitterballen version'
+    placeholder: 1.0.2B
+  validations:
+    required: true
+- type: input
+  id: compat_version
+  attributes:
+    label: Compatibility mod version
+    placeholder: 1.0.0
+  validations:
+    required: true
+- type: textarea
+  id: problem
+  attributes:
+    label: What happened?
+    description: Explain what went wrong.
+    placeholder: Villagers do not pick up...
+  validations:
+    required: true
+- type: textarea
+  id: expected
+  attributes:
+    label: What did you expect to happen?
+  validations:
+    required: true
+- type: textarea
+  id: reproduce
+  attributes:
+    label: Steps to reproduce
+    placeholder: '1. Place a villager
+
+      2. Throw the item
+
+      3. Watch what happens'
+  validations:
+    required: true
+- type: textarea
+  id: logs
+  attributes:
+    label: Logs or crash report
+    description: Paste the relevant log section here, or drag and drop the file.
+    render: text
+- type: textarea
+  id: other_mods
+  attributes:
+    label: Other mods
+    description: List any other mods that could be relevant.
+- type: checkboxes
+  id: checks
+  attributes:
+    label: Before submitting
+    options:
+    - label: 'I tested with the required versions of Create and Create: Bitterballen.'
+      required: true
+    - label: I checked that this issue has not already been reported.
+      required: true
