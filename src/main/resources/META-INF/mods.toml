@@ -1,0 +1,41 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license = "All Rights Reserved; see LICENSE.md"
+
+[[mods]]
+modId="bitterballen_villager_compat"
+version="1.0.0"
+displayName="Create: Bitterballen - Villager Breeding Compatibility"
+authors="Hxney"
+description='''
+Allows Minecraft villagers to pick up, share, and use Create: Bitterballen foods for breeding, with per-food configuration while preserving vanilla villager behavior.
+'''
+logoFile="bvc.png"
+logoBlur=false
+[[dependencies.bitterballen_villager_compat]]
+modId="forge"
+mandatory=true
+versionRange="[47.2.0,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.bitterballen_villager_compat]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.bitterballen_villager_compat]]
+modId="create"
+mandatory=true
+versionRange="[6.0.6,)"
+ordering="AFTER"
+side="BOTH"
+
+[[dependencies.bitterballen_villager_compat]]
+modId="create_bic_bit"
+mandatory=true
+versionRange="[1.0.1,)"
+ordering="AFTER"
+side="BOTH"

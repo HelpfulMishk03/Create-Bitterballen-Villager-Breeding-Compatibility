@@ -1,0 +1,5 @@
+{
+  "bitterballen_villager_compat.config.enabled": "Enable villager food compatibility",
+  "bitterballen_villager_compat.config.foodPoints": "Bitterballen food points",
+  "bitterballen_villager_compat.config.allowPickup": "Allow villager pickup"
+}

@@ -1,0 +1,9 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        maven { url = 'https://maven.minecraftforge.net/' }
+        mavenCentral()
+    }
+}
+
+rootProject.name = 'Create-Bitterballen-Villager-Breeding-Compatibility-1.20.1'
