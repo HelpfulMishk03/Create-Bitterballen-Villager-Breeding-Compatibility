@@ -6,6 +6,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.npc.Villager;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.server.ServerAboutToStartEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -25,6 +26,10 @@ import java.util.Set;
 
 @Mod(BitterballenVillagerCompat.MOD_ID)
 public final class BitterballenVillagerCompat {
+    private static int configWatchTicks;
+    private static boolean observedEnabled;
+    private static boolean observedEnabledKnown;
+    private static boolean changesApplied;
     public static final String MOD_ID = "bitterballen_villager_compat";
     private static final String BITTERBALLEN_NAMESPACE = "create_bic_bit";
     private static final Logger LOGGER = LogUtils.getLogger();
@@ -39,6 +44,7 @@ public final class BitterballenVillagerCompat {
         modBus.addListener(this::onLoadComplete);
         modBus.addListener(this::onConfigReloading);
         MinecraftForge.EVENT_BUS.addListener(this::onServerAboutToStart);
+        MinecraftForge.EVENT_BUS.addListener(this::onServerTick);
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
@@ -59,6 +65,28 @@ public final class BitterballenVillagerCompat {
         applyConfiguredState();
     }
 
+    private void onServerTick(TickEvent.ServerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END) {
+            return;
+        }
+
+        if (++configWatchTicks < 20) {
+            return;
+        }
+        configWatchTicks = 0;
+
+        boolean enabled = BVCConfig.ENABLED.get();
+        synchronized (STATE_LOCK) {
+            if (observedEnabledKnown && observedEnabled == enabled) {
+                return;
+            }
+
+            observedEnabled = enabled;
+            observedEnabledKnown = true;
+        }
+
+        applyConfiguredState();
+    }
     private static void initialize() {
         synchronized (STATE_LOCK) {
             captureBaselines();
@@ -99,8 +127,11 @@ public final class BitterballenVillagerCompat {
         captureBaselines();
 
         if (!BVCConfig.ENABLED.get()) {
-            restoreBaselines();
-            LOGGER.info("Create: Bitterballen villager food compatibility is disabled. Restored the pre-BVC villager food state.");
+            if (changesApplied) {
+                restoreBaselines();
+                changesApplied = false;
+            }
+            LOGGER.info("Create: Bitterballen villager food compatibility is disabled.");
             return;
         }
 
@@ -136,6 +167,7 @@ public final class BitterballenVillagerCompat {
         Villager.FOOD_POINTS = Map.copyOf(foodPointsMap);
         Villager.WANTED_ITEMS = Set.copyOf(wantedItems);
 
+        changesApplied = true;
         LOGGER.info("Create: Bitterballen villager compatibility applied to {} configured food items.", appliedFoods);
     }
 

@@ -4,9 +4,9 @@ license = "All Rights Reserved; see LICENSE.md"
 
 [[mods]]
 modId="bitterballen_villager_compat"
-version="1.0.0"
+version="1.0.1"
 displayName="Create: Bitterballen - Villager Breeding Compatibility"
-authors="Hxney"
+authors="Hxney (Ł)"
 description='''
 Allows Minecraft villagers to pick up, share, and use Create: Bitterballen foods for breeding, with per-food configuration while preserving vanilla villager behavior.
 '''

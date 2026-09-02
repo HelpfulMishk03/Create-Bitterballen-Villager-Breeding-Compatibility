@@ -1,6 +1,6 @@
 # Create: Bitterballen - Villager Breeding Compatibility License
 
-Copyright © 2026 Hxney. All Rights Reserved.
+Copyright © 2026 Hxney (Ł). All Rights Reserved.
 
 Create: Bitterballen - Villager Breeding Compatibility and its original source code, configuration design, writing, branding, and other original assets are owned by Hxney unless otherwise stated.
 

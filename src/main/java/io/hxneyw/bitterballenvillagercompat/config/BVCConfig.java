@@ -47,6 +47,7 @@ public final class BVCConfig {
         registerFood(builder, foods, "mayonnaise_topped_frikandel_sandwich", 3);
         registerFood(builder, foods, "mayonnaise_topped_kroket_sandwich", 3);
         registerFood(builder, foods, "oliebollen", 2);
+        registerFood(builder, foods, "coated_oliebollen", 2);
         registerFood(builder, foods, "raw_herring", 1);
         registerFood(builder, foods, "roasted_sunflower_seeds", 1);
         registerFood(builder, foods, "speculaas", 1);
